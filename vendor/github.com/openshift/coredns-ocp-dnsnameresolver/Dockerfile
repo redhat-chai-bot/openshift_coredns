@@ -4,7 +4,7 @@ COPY . .
 
 RUN make build-coredns
 
-FROM registry.ci.openshift.org/ocp/4.21:base
+FROM quay-proxy.ci.openshift.org/openshift/ci:ocp_4.21_base
 COPY --from=builder /go/src/github.com/openshift/coredns-ocp-dnsnameresolver/coredns /usr/bin/
 
 ENTRYPOINT ["/usr/bin/coredns"]
